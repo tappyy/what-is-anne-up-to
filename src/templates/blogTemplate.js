@@ -1,14 +1,21 @@
 // 1. Import the `remarkForm` HOC
-import { remarkForm } from 'gatsby-tinacms-remark'
+import { liveRemarkForm } from 'gatsby-tinacms-remark'
 import { graphql } from 'gatsby'
 import React from 'react'
+import { Wysiwyg } from '@tinacms/fields'
+import { TinaField } from '@tinacms/form-builder'
 
-function BlogPostTemplate(props) {
-  return <h1>{props.data.markdownRemark.frontmatter.title}</h1>
+function BlogPostTemplate({ data, isEditing, setIsEditing }) {
+  return (
+    <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
+      <section class="content" dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></section>
+      <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
+    </TinaField>
+  )
 }
 
 // 2. Wrap your template with `remarkForm`
-export default remarkForm(BlogPostTemplate, { queryName: 'myContent' })
+export default liveRemarkForm(BlogPostTemplate, { queryName: 'myContent' })
 
 // 3. Add the required fields to the GraphQL query
 export const pageQuery = graphql`
@@ -24,18 +31,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query BlogPostBySlug($slug: String!) {
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       id
-//       html
-//       frontmatter {
-//         title
-//         date
-//         description
-//       }
-//       ...TinaRemark
-//     }
-//   }
-// `
