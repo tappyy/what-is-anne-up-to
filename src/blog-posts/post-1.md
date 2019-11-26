@@ -1,6 +1,6 @@
 ---
-title: HELLO GUYS
-path: /blog/my-first-post
+title: post 1
+path: /post-1
 date: '2019-05-04'
 ---
-    Hello world
+hello world
