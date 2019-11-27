@@ -15,7 +15,6 @@ const IndexPage = () => {
           frontmatter {
             title
             date
-            path
           }
         }
       }
