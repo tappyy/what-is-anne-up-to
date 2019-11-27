@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
-import PostPreview from "../components/postPreview"
+import Post from "../components/post"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -27,11 +27,13 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <section className='home-section'>
-        <h1>Meet Anne.</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis officia reiciendis sint? Saepe minus culpa sunt ipsam reprehenderit. Delectus eaque, consequatur molestiae maxime sunt modi facere voluptatem maiores tempora laboriosam.</p>
+        <h1 className='emoji-anne'><span role='img' aria-label='anne emoji'>👩</span></h1>
+        <h1 className='title'>Meet Anne.</h1>
+        <p>Anne thinks my email is her email.</p>
+        <p>Anne likes to buy clothes.</p>
       </section>
       <section className='posts-section'>
-        {data.allMarkdownRemark.edges.map(({ node }) => <PostPreview key={node.id} post={node} />)}
+        {data.allMarkdownRemark.edges.map(({ node }) => <Post key={node.id} post={node} />)}
       </section>
     </Layout>
   )

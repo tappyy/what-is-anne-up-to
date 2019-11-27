@@ -33,5 +33,15 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Raleway`,
+          `Playfair Display`
+        ],
+        display: 'swap'
+      }
+    }
   ],
 }
