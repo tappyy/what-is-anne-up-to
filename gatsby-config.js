@@ -33,6 +33,13 @@ module.exports = {
         ],
         display: 'swap'
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-43666868-3",
+        head: true,
+      },
+    },
   ],
 }
