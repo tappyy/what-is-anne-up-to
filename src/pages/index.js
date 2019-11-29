@@ -7,7 +7,7 @@ import Post from "../components/post"
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
   query AllPosts {
-    allMarkdownRemark {
+    allMarkdownRemark (sort: { fields: [frontmatter___date], order: ASC }) {
       edges {
         node {
           id

@@ -6,7 +6,7 @@ const Post = ({ post }) => {
     <article className='post-preview'>
       <div className='heading'>
         <h1>{post.frontmatter.title}</h1>
-        <p>{moment(post.frontmatter.date, "DD-MM-YY").fromNow()}</p>
+        <p>{moment(post.frontmatter.date, "YYYY-MM-DD").fromNow()}</p>
       </div>
       <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
     </article>
